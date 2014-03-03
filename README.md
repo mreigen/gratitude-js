@@ -7,6 +7,8 @@ gratitude-js
 
 Install the dependencies:
 
-$ npm install
+    $ npm install
+    
+Start the server!
 
-$ nodemon app
+    $ nodemon app

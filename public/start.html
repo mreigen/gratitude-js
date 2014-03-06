@@ -67,8 +67,8 @@
 
   </div>
 
-  <a href="/auth/facebook">Login with Facebook</a>
-  <a href="/logout">Logout</a>
+  <a href="/auth/facebook" ng-show="currentUser == null">Login with Facebook</a>
+  <a href="/logout" ng-hide="currentUser == null">Logout</a>
 
 </body>
 </html>

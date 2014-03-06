@@ -1,4 +1,5 @@
 var Gratitude = require('./models/gratitude');
+var passport = require('./config/facebook.js');
 
 module.exports = function(app) {
 
@@ -45,6 +46,27 @@ module.exports = function(app) {
       });
     });
   });
+
+
+  // FACEBOOK
+  // Redirect the user to Facebook for authentication.  When complete,
+  // Facebook will redirect the user back to the application at
+  //     /auth/facebook/callback
+  app.get('/auth/facebook', passport.authenticate('facebook', { display: 'popup'}));
+  // Facebook will redirect the user to this URL after approval.  Finish the
+  // authentication process by attempting to obtain an access token.  If
+  // access was granted, the user will be logged in.  Otherwise,
+  // authentication has failed.
+  app.get('/auth/facebook/callback',
+    passport.authenticate('facebook', { failureRedirect: '/login' }),
+    function(req, res) {
+      res.redirect('/');
+    });
+  app.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
+  });
+
 
   // application -------------------------------------------------------------
   app.get('/', function(req, res) {

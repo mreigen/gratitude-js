@@ -1,9 +1,12 @@
 var Gratitude = require('./models/gratitude');
-var passport = require('./config/facebook.js');
+var User      = require('./models/user');
+var passport  = require('./config/facebook.js');
 
 module.exports = function(app) {
 
   // api ---------------------------------------------------------------------
+
+  // GRATITUDES
   // get all gratitudes
   app.get('/api/gratitudes', function(req, res) {
     // use mongoose to get all gratitudes in the database
@@ -47,6 +50,13 @@ module.exports = function(app) {
     });
   });
 
+  // USERS
+  app.get('/api/current_user', function(req, res) {
+    User.find({ username : req.user.username }, function(err, user) {
+      if (err) res.send(err);
+      res.json(user);
+    });
+  });
 
   // FACEBOOK
   // Redirect the user to Facebook for authentication.  When complete,

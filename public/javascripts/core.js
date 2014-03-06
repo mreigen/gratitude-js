@@ -3,6 +3,7 @@ var Gratitude = angular.module('Gratitude', []);
 function mainController($scope, $http) {
   $scope.formData = {};
 
+  // GRATITIUDES
   // when landing on the page, get all gratitudes and show them
   $http.get('/api/gratitudes')
     .success(function(data) {
@@ -35,4 +36,10 @@ function mainController($scope, $http) {
       });
   };
 
+  // USERS
+  $http.get('/api/current_user')
+    .success(function(data) {
+      console.log(data);
+      $scope.currentUser = data;
+    });
 }

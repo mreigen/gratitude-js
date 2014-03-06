@@ -1,6 +1,4 @@
-
 node_modules/*
 data/*
 
-
-app/config/facebook.js
+app/config/facebook_secrets.js

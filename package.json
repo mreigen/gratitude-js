@@ -11,6 +11,8 @@
     "jade": "*",
     "stylus": "*",
     "mongodb": "*",
-    "mongoose": "*"
+    "mongoose": "*",
+    "passport": ">= 0.0.0",
+    "passport-facebook": ">= 0.0.0"
   }
 }
